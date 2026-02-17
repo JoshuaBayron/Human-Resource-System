@@ -3,24 +3,28 @@ import { AppPage } from "../types";
 interface SidebarProps {
   activeTab: string;
   onSelectTab: (tab: AppPage) => void;
+  collapsed?: boolean;
 }
 
-const navItems = ['Dashboard', 'Summaries', 'Processes', 'Fiscal Years', 'Settings'];
+export default function Sidebar({ activeTab, onSelectTab, collapsed }: SidebarProps) {
+  const navItems = ["Dashboard", "Summaries", "Processes", "Fiscal Years", "Settings"];
 
-export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
   return (
-    <aside className="sidebar">
-      <h1>HR Suite</h1>
-      <p>People operations command center</p>
+    <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+      {!collapsed && (
+        <>
+          <h1>HR Suite</h1>
+          <p>People operations command center</p>
+        </>
+      )}
       <nav>
-        {navItems.map((item:any) => (
+        {navItems.map((item: any) => (
           <button
             key={item}
-            type="button"
-            className={activeTab === item ? 'active' : ''}
+            className={activeTab === item ? "active" : ""}
             onClick={() => onSelectTab(item)}
           >
-            {item}
+            {collapsed ? item.charAt(0) : item} {/* show only first letter when collapsed */}
           </button>
         ))}
       </nav>

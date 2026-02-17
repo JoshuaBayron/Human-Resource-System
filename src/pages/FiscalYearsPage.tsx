@@ -1,7 +1,7 @@
 import { fiscalRecords } from '../data';
 import { formatCurrency } from '../utils/format';
 
-export default function FiscalYearsPage() {
+const FiscalYearsPage = () => {
   return (
     <section className="page-content">
       <header>
@@ -25,3 +25,5 @@ export default function FiscalYearsPage() {
     </section>
   );
 }
+
+export default FiscalYearsPage;

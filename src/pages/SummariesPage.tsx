@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { processItems } from '../data';
 
-export default function SummariesPage() {
+const SummariesPage = () => {
   const processBreakdown = useMemo(() => {
     return processItems.reduce<Record<string, number>>((acc, item) => {
       acc[item.type] = (acc[item.type] ?? 0) + 1;
@@ -29,3 +29,5 @@ export default function SummariesPage() {
     </section>
   );
 }
+
+export default SummariesPage;
