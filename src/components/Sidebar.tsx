@@ -1,5 +1,6 @@
 import { AppPage } from "../types";
 import { useNavigate } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 interface SidebarProps {
   activeTab: string;
@@ -29,9 +30,7 @@ export default function Sidebar({ activeTab, onSelectTab, collapsed, onToggleCol
       <div className="sidebar-header">
         {/* Logo or icon for collapsed state */}
         <div className="sidebar-logo">
-          {collapsed ? (
-            ""
-          ) : (
+          {!collapsed && (
             <>
               <h1>HR Suite</h1>
               <p>People operations command center</p>
@@ -39,7 +38,7 @@ export default function Sidebar({ activeTab, onSelectTab, collapsed, onToggleCol
           )}
         </div>
         <button className="collapse-btn" onClick={onToggleCollapse}>
-          {collapsed ? ">" : "<"}
+          {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
         </button>
       </div>
 

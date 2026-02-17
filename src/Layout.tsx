@@ -7,7 +7,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   const [activeTab, setActiveTab] = useState<AppPage>("Dashboard");
 
   return (
-    <div className="layout">
+    <div className={`layout ${collapsed ? "collapsed" : ""}`}>
       <Sidebar
         activeTab={activeTab}
         onSelectTab={setActiveTab}
