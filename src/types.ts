@@ -21,3 +21,5 @@ export interface FiscalRecord {
   recruitmentPlan: number;
   attritionForecast: number;
 }
+
+export type AppPage = 'Dashboard' | 'Summaries' | 'Processes' | 'Fiscal Years' | 'Settings';
