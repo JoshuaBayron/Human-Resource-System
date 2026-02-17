@@ -1,4 +1,4 @@
-export default function SettingsPage() {
+const SettingsPage = () => {
   return (
     <section className="page-content">
       <header>
@@ -36,3 +36,5 @@ export default function SettingsPage() {
     </section>
   );
 }
+
+export default SettingsPage;

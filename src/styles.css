@@ -18,6 +18,24 @@ body {
   grid-template-columns: 240px 1fr;
 }
 
+/* Collapsed layout */
+.layout.collapsed .sidebar-container {
+  width: 60px; /* shrink sidebar */
+}
+
+.layout.collapsed main {
+  margin-left: 60px; /* adjust main content */
+}
+
+.sidebar.collapsed {
+  text-align: center;
+}
+
+.sidebar.collapsed nav button {
+  padding: 10px;
+  font-size: 0.85rem;
+}
+
 .sidebar {
   background: #0f172a;
   color: #e2e8f0;
@@ -54,10 +72,13 @@ body {
   background: #1e293b;
 }
 
+.sidebar-container {
+  height: 100vh; /* sidebar stretches full viewport */
+}
+
 main {
-  padding: 24px;
-  display: grid;
-  gap: 20px;
+  height: 100vh; /* main content full height */
+  overflow-y: auto; /* scroll if content is long */
 }
 
 header p {

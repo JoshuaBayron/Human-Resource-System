@@ -22,4 +22,4 @@ export interface FiscalRecord {
   attritionForecast: number;
 }
 
-export type AppPage = 'Dashboard' | 'Summaries' | 'Processes' | 'Fiscal Years' | 'Settings';
+export type AppPage = 'Dashboard' | 'Summaries' | 'Processes' | 'FiscalYears' | 'Settings';
