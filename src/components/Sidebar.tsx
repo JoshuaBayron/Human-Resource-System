@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 interface SidebarProps {
   activeTab: string;
   onSelectTab: (tab: AppPage) => void;
-  collapsed?: boolean;
+  collapsed: boolean;
+  onToggleCollapse: () => void;
 }
 
-export default function Sidebar({ activeTab, onSelectTab, collapsed }: SidebarProps) {
+export default function Sidebar({ activeTab, onSelectTab, collapsed, onToggleCollapse }: SidebarProps) {
   const navigate = useNavigate();
 
   const navItems: { label: string; path: string }[] = [
@@ -19,24 +20,36 @@ export default function Sidebar({ activeTab, onSelectTab, collapsed }: SidebarPr
   ];
 
   const handleClick = (item: { label: string; path: string }) => {
-    onSelectTab(item.label as AppPage); // update active tab highlight
-    navigate(item.path); // navigate to the route
+    onSelectTab(item.label as AppPage);
+    navigate(item.path);
   };
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-      {!collapsed && (
-        <>
-          <h1>HR Suite</h1>
-          <p>People operations command center</p>
-        </>
-      )}
+      <div className="sidebar-header">
+        {/* Logo or icon for collapsed state */}
+        <div className="sidebar-logo">
+          {collapsed ? (
+            ""
+          ) : (
+            <>
+              <h1>HR Suite</h1>
+              <p>People operations command center</p>
+            </>
+          )}
+        </div>
+        <button className="collapse-btn" onClick={onToggleCollapse}>
+          {collapsed ? ">" : "<"}
+        </button>
+      </div>
+
       <nav>
         {navItems.map((item) => (
           <button
             key={item.label}
             className={activeTab === item.label ? "active" : ""}
             onClick={() => handleClick(item)}
+            title={collapsed ? item.label : undefined} // Tooltip when collapsed
           >
             {collapsed ? item.label.charAt(0) : item.label}
           </button>

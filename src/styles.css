@@ -16,39 +16,61 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 240px 1fr;
+  transition: grid-template-columns 0.3s;
 }
 
 /* Collapsed layout */
-.layout.collapsed .sidebar-container {
-  width: 60px; /* shrink sidebar */
-}
-
-.layout.collapsed main {
-  margin-left: 60px; /* adjust main content */
-}
-
-.sidebar.collapsed {
-  text-align: center;
-}
-
-.sidebar.collapsed nav button {
-  padding: 10px;
-  font-size: 0.85rem;
+.layout.collapsed {
+  grid-template-columns: 60px 1fr;
 }
 
 .sidebar {
   background: #0f172a;
   color: #e2e8f0;
   padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
+  width: 240px;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+  text-align: center;
+  padding: 24px 8px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .sidebar h1 {
   margin: 0;
+  font-size: 1.2rem;
 }
 
 .sidebar p {
   color: #94a3b8;
   font-size: 0.85rem;
+  margin: 4px 0 0;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.collapse-btn:hover {
+  background: #1e293b;
 }
 
 .sidebar nav {
@@ -58,13 +80,23 @@ body {
 }
 
 .sidebar button {
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background: transparent;
   border: 1px solid #334155;
   color: inherit;
   border-radius: 8px;
   padding: 10px;
   cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.sidebar.collapsed nav button {
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 10px;
 }
 
 .sidebar button.active,
@@ -72,20 +104,20 @@ body {
   background: #1e293b;
 }
 
+/* Main content */
 .sidebar-container {
-  height: 100vh; /* sidebar stretches full viewport */
+  height: 100vh;
+  overflow: hidden;
 }
 
 main {
-  height: 100vh; /* main content full height */
-  overflow-y: auto; /* scroll if content is long */
+  height: 100vh;
+  overflow-y: auto;
+  padding: 16px;
+  transition: margin-left 0.3s;
 }
 
-header p {
-  margin: 8px 0 0;
-  color: #64748b;
-}
-
+/* Stats & panels */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -141,6 +173,7 @@ header p {
   border-bottom: 1px solid #e2e8f0;
 }
 
+/* Tables */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -154,6 +187,7 @@ td {
   font-size: 0.85rem;
 }
 
+/* Fiscal cards */
 .fiscal-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -166,6 +200,7 @@ td {
   padding: 10px;
 }
 
+/* Settings form */
 .settings-form {
   display: grid;
   gap: 10px;
@@ -191,8 +226,14 @@ td {
   color: white;
   border: none;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
+.settings-form button:hover {
+  background: #2563eb;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
@@ -202,5 +243,25 @@ td {
     position: sticky;
     top: 0;
     z-index: 10;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+  }
+
+  .sidebar.collapsed {
+    width: 100%;
+    text-align: left;
+    padding: 16px;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  main {
+    margin-left: 0 !important;
   }
 }
