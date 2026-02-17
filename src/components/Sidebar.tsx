@@ -1,11 +1,9 @@
-import { AppPage } from '../types';
-
 interface SidebarProps {
-  activeTab: AppPage;
-  onSelectTab: (tab: AppPage) => void;
+  activeTab: string;
+  onSelectTab: (tab: string) => void;
 }
 
-const navItems: AppPage[] = ['Dashboard', 'Summaries', 'Processes', 'Fiscal Years', 'Settings'];
+const navItems = ['Dashboard', 'Summaries', 'Processes', 'Fiscal Years', 'Settings'];
 
 export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
   return (

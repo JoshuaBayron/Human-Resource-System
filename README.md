@@ -1,6 +1,6 @@
 # Human Resource System (React + TypeScript)
 
-A lightweight HR operations app built with **ReactJS + TypeScript** for managing core workforce processes:
+A lightweight HR operations dashboard built with **ReactJS + TypeScript** for managing key workforce processes:
 
 - Onboarding
 - Offboarding
@@ -8,15 +8,13 @@ A lightweight HR operations app built with **ReactJS + TypeScript** for managing
 - Department transfers
 - Fiscal year planning
 
-## App pages
+## Project sections
 
-The app is separated into dedicated pages (accessible from the sidebar):
-
-- **Dashboard**: KPI cards for workflow and budget health.
-- **Summaries**: process volume breakdown by workflow type.
-- **Processes**: table view of active and completed HR workflows.
-- **Fiscal Years**: budget, hiring, and attrition outlook per fiscal year.
-- **Settings**: approval policy, notification cadence, and owner defaults.
+- **Dashboard**: top-level KPIs and process health.
+- **Summaries**: process type breakdowns.
+- **Processes**: queue table with ownership and deadlines.
+- **Fiscal Years**: workforce budgeting and headcount outlook.
+- **Settings**: policy and notification preferences.
 
 ## Run locally
 
