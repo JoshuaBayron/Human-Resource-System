@@ -2,7 +2,7 @@ import StatCard from '../components/StatCard';
 import { fiscalRecords, processItems } from '../data';
 import { formatCurrency } from '../utils/format';
 
-export default function DashboardPage() {
+const DashboardPage = () => {
   const inProgress = processItems.filter((item) => item.status === 'In Progress').length;
   const needsReview = processItems.filter((item) => item.status === 'Needs Review').length;
   const completed = processItems.filter((item) => item.status === 'Completed').length;
@@ -26,3 +26,5 @@ export default function DashboardPage() {
     </section>
   );
 }
+
+export default DashboardPage;

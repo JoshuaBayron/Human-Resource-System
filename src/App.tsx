@@ -1,36 +1,15 @@
-import { useMemo, useState } from 'react';
-import Sidebar from './components/Sidebar';
-import DashboardPage from './pages/DashboardPage';
-import FiscalYearsPage from './pages/FiscalYearsPage';
-import ProcessesPage from './pages/ProcessesPage';
-import SettingsPage from './pages/SettingsPage';
-import SummariesPage from './pages/SummariesPage';
-import { AppPage } from './types';
+import { Routes, Route } from "react-router-dom";
+import { DashboardPage, FiscalYearsPage, ProcessesPage, SettingsPage, SummariesPage } from "./utils/PageIndex";
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState<AppPage>('Dashboard');
-
-  const activePage = useMemo(() => {
-    switch (activeTab) {
-      case 'Dashboard':
-        return <DashboardPage />;
-      case 'Summaries':
-        return <SummariesPage />;
-      case 'Processes':
-        return <ProcessesPage />;
-      case 'Fiscal Years':
-        return <FiscalYearsPage />;
-      case 'Settings':
-        return <SettingsPage />;
-      default:
-        return <DashboardPage />;
-    }
-  }, [activeTab]);
-
+function App() {
   return (
-    <div className="layout">
-      <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
-      <main>{activePage}</main>
-    </div>
+    <Routes>
+      <Route path="/" element={<DashboardPage />} />
+      <Route path="/FiscalYear" element={<FiscalYearsPage />} />
+      <Route path="/Process" element={<ProcessesPage />} />
+      <Route path="/Settings" element={<SettingsPage />} />
+      <Route path="/Summary" element={<SummariesPage />} />
+    </Routes>
   );
 }
+export default App;

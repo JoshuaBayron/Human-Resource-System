@@ -1,6 +1,6 @@
 import { processItems } from '../data';
 
-export default function ProcessesPage() {
+const ProcessesPage = () => {
   return (
     <section className="page-content">
       <header>
@@ -37,3 +37,5 @@ export default function ProcessesPage() {
     </section>
   );
 }
+
+export default ProcessesPage;
