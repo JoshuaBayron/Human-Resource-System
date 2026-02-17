@@ -1,6 +1,8 @@
+import { AppPage } from "../types";
+
 interface SidebarProps {
   activeTab: string;
-  onSelectTab: (tab: string) => void;
+  onSelectTab: (tab: AppPage) => void;
 }
 
 const navItems = ['Dashboard', 'Summaries', 'Processes', 'Fiscal Years', 'Settings'];
@@ -11,7 +13,7 @@ export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
       <h1>HR Suite</h1>
       <p>People operations command center</p>
       <nav>
-        {navItems.map((item) => (
+        {navItems.map((item:any) => (
           <button
             key={item}
             type="button"
